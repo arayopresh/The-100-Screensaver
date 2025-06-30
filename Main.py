@@ -1,6 +1,6 @@
 import time
 import random
-import os
+
 
 
 def load_quotes(): #function to load the file from quotes.txt
@@ -11,14 +11,15 @@ def load_quotes(): #function to load the file from quotes.txt
        return ["Quotes.txt file is empty. Nothing to display."]
     
 def display_quotes():
+    counter = 0
+    max_quotes = 100
     quotes = load_quotes()
-    while True:
+    while counter < max_quotes:
         quote = random.choice(quotes)
         print(quote)
         time.sleep(1)
-        exit = input("Press q to exit").upper
-        if exit == 'q':
-            break
+        counter = counter + 1 
+        
 
 display_quotes()
 
