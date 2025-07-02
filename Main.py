@@ -1,5 +1,6 @@
 import time
 import random
+import tkinter as tk #pop up
 
 
 
@@ -10,18 +11,45 @@ def load_quotes(): #function to load the file from quotes.txt
     except FileNotFoundError: #theow exception when the txt file is empty
        return ["Quotes.txt file is empty. Nothing to display."]
     
-def display_quotes():
-    counter = 0
-    max_quotes = 100
+
+'''def display_quotes():
+    counter = [0]
+    max_quotes = 100 #maximum number of quotes allowed to be displayed
     quotes = load_quotes()
-    while counter < max_quotes:
+   while counter < max_quotes:
         quote = random.choice(quotes)
         print(quote)
-        time.sleep(1)
-        counter = counter + 1 
-        
+        time.sleep(1) #will it freeze the gui??
+        counter = counter + 1  '''
 
-display_quotes()
+#window for display
+root = tk.Tk()
+root.title("The 100")
+root.geometry("600x200")
 
+# hiw the quotes aere gonna look
+quote_label = tk.Label(root, text="", wraplength=500, font=("Times New Roman", 14), justify="center")
+quote_label.pack(expand=True) #expanding to fill all availabel space in screen 
+
+
+
+
+counter = [0] #using a list here bc i might wanna modify
+max_quotes = 100 #maximum number of quotes allowed to be displayed
+quotes = load_quotes()
+
+def quotes_display():
+    if counter[0] < max_quotes:
+            quote_label.config(text=random.choice(quotes)) #randomly pickinf the quotes
+            counter[0] += 1
+            root.after(10000, quotes_display) #changes every 10 secs
+    else:
+            root.destroy() #will automatically close the window after 100 quotes have veen showed
 
     
+
+#display_quotes()
+
+quotes_display() 
+root.mainloop()
+
