@@ -28,7 +28,7 @@ root.title("The 100")
 root.geometry("600x200")
 
 # hiw the quotes aere gonna look
-quote_label = tk.Label(root, text="", wraplength=500, font=("Times New Roman", 14), justify="center")
+quote_label = tk.Label(root, text="", wraplength=500, font=("Times New Roman", 30), justify="center")
 quote_label.pack(expand=True) #expanding to fill all availabel space in screen 
 
 
