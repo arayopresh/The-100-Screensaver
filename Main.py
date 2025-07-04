@@ -20,21 +20,36 @@ def load_quotes(): #function to load the file from quotes.txt
         quote = random.choice(quotes)
         print(quote)
         time.sleep(1) #will it freeze the gui??
-        counter = counter + 1  '''
+        counter = counter + 1  ''' 
 
 #window for display
 root = tk.Tk()
 root.title("The 100")
-root.geometry("600x200")
+root.geometry("736x1309") #editted it to fit the picture i already had😭
+
+
+bg_image = tk.PhotoImage(file="The_100_bg.png") #changing bg to 100 theme
+
+# set the background image
+background_label = tk.Label(root, image=bg_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1) #making it fill the whoel window
+
+
+
+#Creating a frame so that the quote and sayers are in the middle
+quote_frame = tk.Frame(root,bg ="#9ba7a3")  
+
+quote_frame.place(relx=0.5, rely=0.5, anchor="center") # Centering the frame
 
 
 # hiw the quotes aere gonna look
-quote_label = tk.Label(root, text="", wraplength=500, font=("Times New Roman", 30), justify="left")
-quote_label.pack() #i dont want it expanding down
+quote_label = tk.Label(quote_frame, text="", wraplength=500, font=("Times New Roman", 30), justify="left", anchor ="center", bg = "#9ba7a3")#bcc4c7 -whitish colur
+quote_label.pack(pady=(0, 5), anchor = "center")  # small gap below
+ 
 
 #sayer of quote
-quote_sayer = tk.Label(root, text = "", wraplength = 500, font = ("Times New Roman", 20, "italic"), justify = "right")
-quote_sayer.pack() 
+quote_sayer = tk.Label(quote_frame, text = "", wraplength = 500, font = ("Times New Roman", 20, "italic"), justify = "right", bg= "#9ba7a3")
+quote_sayer.pack(anchor ="center") 
 
 
 
@@ -43,11 +58,13 @@ counter = [0] #using a list here bc i might wanna modify
 max_quotes = 100 #maximum number of quotes allowed to be displayed
 quotes = load_quotes()
 
+
 def quotes_display():
-    if counter[0] < max_quotes:
+   # if counter[0] < max_quotes:
         full_quote = random.choice(quotes) #random choice of quotes
 
        # print(f"Displaying quote {counter[0]+1}: {full_quote}")
+
 
         # Split the quote and author
         if '-' in full_quote:
@@ -57,10 +74,10 @@ def quotes_display():
         else:
             quote_label.config(text=full_quote)
             quote_sayer.config(text="")
-        counter[0] += 1
-        root.after(1000, quotes_display) #changes every 10 secs
-    else:
-            root.destroy() #will automatically close the window after 100 quotes have veen showed
+        #counter[0] += 1
+        root.after(1000, quotes_display) #changes every 10 secs  #EDIT THE TIMEEEEEE------TESTER!!!
+    #else:
+   #         root.destroy() #will automatically close the window after 100 quotes have veen showed
 
     
 
