@@ -75,7 +75,7 @@ def quotes_display():
             quote_label.config(text=full_quote)
             quote_sayer.config(text="")
         #counter[0] += 1
-        root.after(1000, quotes_display) #changes every 10 secs  #EDIT THE TIMEEEEEE------TESTER!!!
+        root.after(30000, quotes_display) #changes every 30 secs  
     #else:
    #         root.destroy() #will automatically close the window after 100 quotes have veen showed
 
